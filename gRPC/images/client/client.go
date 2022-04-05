@@ -34,7 +34,7 @@ func main() {
 	wg.Add(workerPoolSize)
 	// Start consumer with cancellation context passed
 	go client.StartConsumer(ctx)
-
+	
 	//Start [workerPoolSize] workers
 	for i := 0; i < workerPoolSize; i++ {
 		go client.WorkerFunc(wg, i)
@@ -45,7 +45,6 @@ func main() {
 	termChan := make(chan os.Signal)
 	signal.Notify(termChan, syscall.SIGINT, syscall.SIGTERM)
 
-	//  go startConsumer(ctx)
 	<-termChan // Blocks here until either SIGINT or SIGTERM is received.
 	cancelFunc()
 	wg.Wait() // program will wait here until all worker goroutines have reported that they're done
