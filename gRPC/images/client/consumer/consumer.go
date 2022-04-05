@@ -66,10 +66,6 @@ func NewClient(cc *grpc.ClientConn) Client {
 	}
 }
 
-// callbackFunc is invoked each time the external lib passes an event to us.
-// func (c Client) callbackFunc(event string) {
-// 	c.ingestChan <- event
-// }
 
 func (c Client) WorkerAddOpt(ctx context.Context) {
 	for {
@@ -92,15 +88,10 @@ func (c Client) WorkerAddOpt(ctx context.Context) {
 				// 	c.ingestChanUpload <- options.opt
 			}
 		}
-
-		// err := uploadImageFromStdin(c.client)
-		// if err != nil {
-		// 	log.Error().Err(err).Send()
-		// }
 	}
 }
 
-// workerFunc starts a single worker function that will range on the jobsChan until that channel closes.
+
 func (c Client) WorkerFunc(wg *sync.WaitGroup, index int) {
 	defer wg.Done()
 
@@ -108,13 +99,13 @@ func (c Client) WorkerFunc(wg *sync.WaitGroup, index int) {
 	for fname := range c.jobsChanUpload {
 		log.Info().Msgf("Worker %d started job %d\n", index, fname)
 		c.uploadImage(fname)
-		// time.Sleep(time.Millisecond * time.Duration(1000+rand.Intn(2000)))
+		
 		log.Info().Msgf("Worker %d finished processing job %d\n", index, fname)
 	}
 	fmt.Printf("Worker %d interrupted\n", index)
 }
 
-// startConsumer acts as the proxy between the ingestChan and jobsChan, with a select to support graceful shutdown.
+
 func (c Client) StartConsumer(ctx context.Context) {
 	for {
 		select {
