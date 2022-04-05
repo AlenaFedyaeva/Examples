@@ -21,7 +21,7 @@ message UploadImageResponse {
 }
 
 service ImageService {
-    //rpc GetListOfFiles(stream UploadImageRequest) returns (UploadImageResponse) {};
+    //rpc GetListOfFiles(UploadImageRequest) returns (stream UploadImageResponse) {};
     rpc ImageLoadOnServer(stream UploadImageRequest) returns (UploadImageResponse) {};
-    //rpc ImageGetOnClient(stream UploadImageRequest) returns (UploadImageResponse) {};
+    //rpc ImageGetFromServer(UploadImageRequest) returns (stream UploadImageResponse) {};
 }
