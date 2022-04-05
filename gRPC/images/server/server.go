@@ -14,8 +14,6 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// var once sync.Once
-
 func main() {
 	use.SetLogLevel()
 	log.Info().Msg(("Server images start..."))
