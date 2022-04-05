@@ -122,7 +122,6 @@ func (c Client) StartConsumer(ctx context.Context) {
 }
 
 //  upload image on server
-//  Users/alfedyaeva/workspace/tmp/images/client/img/big_flower.png
 func (c Client) uploadImageFromStdin() error {
 	imagePath, err := use.GetUploadFileName()
 	if err != nil {
