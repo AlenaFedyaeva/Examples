@@ -1,0 +1,9 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "host": "localhost:8989",
+    "basePath": "/tmp",
+    "paths": {}
+}
