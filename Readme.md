@@ -8,7 +8,7 @@
 
 ## REST
 
-### 1) force fownload
+### 1) force download
 
 ```
 
